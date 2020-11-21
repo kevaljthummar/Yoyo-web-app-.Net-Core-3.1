@@ -1,0 +1,72 @@
+﻿@model YoyoViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    @*Timer Section*@
+    <partial name="_Timer" />
+
+    <button id="btnStart" name="btnStart" class="btn btn-default btn-success btn-sm" onclick="StartTimer()">
+        Strat
+    </button>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <p>NEXT SHUTTLE</p>
+                <p id="shuttle">0:00 s.</p>
+            </div>
+            <div class="col-sm-4">
+                <p>TOTAL TIME</p>
+                <p id="time">0:00 m.</p>
+            </div>
+            <div class="col-sm-4">
+                <p>TOTAL DISTANCE</p>
+                <p id="distance">0  m.</p>
+            </div>
+        </div>
+    </div>
+    @*Timer Section*@
+
+    @*Grid Section*@
+    <div style="margin-top:5px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <b>Track List</b>
+                </div>
+            </div>
+
+            @foreach (var item in Model.Players)
+            {
+                <div class="row">
+                    <div class="col-sm-4">
+                        <b>@item.Name</b>
+                    </div>
+                    <div class="col-sm-3 colWarn" id="colWarn" style="display:none;">
+                        <button class="btn btn-sm btn-primary"
+                                id="warn_@item.Id"
+                                name="warn_@item.Id"
+                                onclick="warnPlayer(@item.Id)">
+                            Warn
+                        </button>
+                    </div>
+                    <div class="col-sm-3 colStop" id="colStop" style="display:none;">
+                        <button class="btn btn-sm btn-danger"
+                                id="stop_@item.Id"
+                                name="stop_@item.Id"
+                                disabled
+                                onclick="stopPlayer(@item.Id)">
+                            Stop
+                        </button>
+                    </div>
+                    <div class="col-sm-2" id="ddl_@item.Id" name="ddl_@item.Id" style="display:none;">
+                        <span id="level_@item.Id"></span>-<span id="shuttle_@item.Id"></span>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    @*Grid Section*@
+</div>

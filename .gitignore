@@ -1,0 +1,7 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/YoYo-Web-App/bin/Debug/netcoreapp3.1
+/YoYo-Web-App/obj
+/.vs/YoYo-Web-App
